@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ServerProvider } from '../../providers/server/server'
 import { LoginPage } from "../login/login"
-import { RegisterPage } from "../register/register"
 import { GamePage } from "../game/game"
 
 @Component({
@@ -11,16 +11,19 @@ import { GamePage } from "../game/game"
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public serverProvider: ServerProvider) {
 
   }
 
-  login(){
-    this.navCtrl.push(LoginPage)
-  }
-
-  register(){
-    this.navCtrl.push(RegisterPage)
+  logoutUser(){
+    this.serverProvider.logout()
+      .subscribe(
+        (result) => {
+          console.log(result)
+          this.navCtrl.setRoot(LoginPage)
+        }, 
+        (err) => console.log(err)
+      )
   }
 
   game(){

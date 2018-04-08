@@ -2,11 +2,19 @@ page-game {
   width: 0;
   padding: 0;
 
-  #button-wrapper{
-    padding: 5px;
-    background-color: purple;
+  #info{
+    position: fixed;
+    left: 5px;
+    top: 15px;
+  }
+ 
+  .button-wrapper{
     position: fixed;
     bottom: 0;
-    width: 100%;
   }
 }
+
+
+
+
+

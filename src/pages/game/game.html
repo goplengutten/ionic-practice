@@ -1,18 +1,14 @@
-<!--
-  Generated template for the GamePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
 <ion-content>
   <div class="ion-canvas">
-      <canvas #canvas></canvas>
+      <canvas #canvas (mouseup)="onMouseup()" (mousedown)="onMousedown($event)" (mousemove)="onMousemove($event)"></canvas>
   </div>
-  <div id="button-wrapper" center>
-    <button ion-button full color="success" [disabled]="animating" (click)="fire()">FIRE!</button>
-    <button ion-button color="light" [disabled]="animating" (click)="solid()">Solid</button>
-    <button ion-button color="light"  [disabled]="animating" (click)="tunnel()">Tunnel</button>
-    <button ion-button color="danger" (click)="exit()">Exit</button>
+  <div id="info">
+    <h4>Lives: {{ lives }}</h4>
+    <h4>LVL: {{ level }}</h4>
+  </div>
+  <div ion-row class="align-items-center button-wrapper">
+    <button ion-button color="primary" [disabled]="animating" (click)="fire()">FIRE!</button>
+    <button ion-button color="light" [disabled]="animating" (click)="changeState()">{{ state }}</button>
+    <button ion-button color="dark" (click)="exit()">Exit</button>
   </div>
 </ion-content>
